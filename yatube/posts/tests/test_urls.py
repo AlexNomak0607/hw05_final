@@ -44,17 +44,17 @@ class PostURLTests(TestCase):
     def test_index_page(self):
         """Проверка главной страницы"""
         response = self.guest_client.get(PostURLTests.public_urls[0][0])
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_group_list(self):
         """Проверка страницы групп"""
         response = self.guest_client.get(PostURLTests.public_urls[1][0])
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_profile(self):
         """Проверка страницы профиля"""
         response = self.guest_client.get(PostURLTests.public_urls[2][0])
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_post_detail(self):
         """Проверка страницы поста"""
@@ -85,7 +85,7 @@ class PostURLTests(TestCase):
     def test_unexiting_page(self):
         """Проверка несуществующей страницы"""
         response = self.guest_client.get('/unexiting_page/')
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
 
     def test_urls_uses_correct_template(self):
         """URL-адрес использует соответствующий шаблон."""
